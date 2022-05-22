@@ -1,0 +1,60 @@
+.row{
+    max-width:$grid-width; /*mostly used nowdays*/
+    margin: 0 auto;
+
+    &:not(:last-child){
+        margin-bottom: $gutter-vertical;
+    }
+    //the above code in not() will apply to every element in the grid
+    //aspect the last child 
+
+    @include clearfix;
+
+    //attribute selector
+    [class^="col-"]{
+        float: left;
+
+        &:not(:last-child){
+            margin-right: $gutter-horizontal;
+        }
+    }
+
+    // [class^="col-"]
+    //the above selector will select all the elements whose 
+    //class attribute value starts with col-
+
+    // [class*="col-"]
+    //the above selector will select all the elements 
+    //whose class attribute value contains col-
+
+    
+    // [class$="col-"]
+    //the above selector will select all the elements
+    //whose class attribute value ends with col-
+
+
+    .col-1-of-2 {
+        width: calc((100% - #{$gutter-horizontal})/2); 
+        //in calc function we have to #{} for using the sass variables
+    }
+
+    .col-1-of-3{
+        width: calc((100% - 2*#{$gutter-horizontal})/3);
+    }
+
+    .col-2-of-3{
+        width: calc(2*((100% - 2*#{$gutter-horizontal})/3) + #{$gutter-horizontal});
+    }
+
+    .col-1-of-4{
+        width: calc((100% - 3*#{$gutter-horizontal})/4);
+    }
+
+    .col-2-of-4{
+        width: calc(2*((100% - 3*#{$gutter-horizontal})/4) + #{$gutter-horizontal});
+    }
+
+    .col-3-of-4{
+        width: calc(3*((100% - 3*#{$gutter-horizontal})/4) + 2* #{$gutter-horizontal});
+    }
+}
